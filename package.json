@@ -1,0 +1,26 @@
+{
+  "name": "supreme-court-transcripts",
+  "version": "1.0.0",
+  "description": "Attempting to parse supreme court oral argument transcripts.",
+  "main": "scrape.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/veltman/supreme-court-transcripts.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/veltman/supreme-court-transcripts/issues"
+  },
+  "homepage": "https://github.com/veltman/supreme-court-transcripts",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "pdf-extract": "^1.0.8",
+    "queue-async": "^1.0.7",
+    "request": "^2.55.0",
+    "underscore": "^1.8.3"
+  }
+}
