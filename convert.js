@@ -6,6 +6,7 @@ var fs = require("fs"),
 
 var pdfs = queue(1);
 
+// Queue up each PDF for conversion
 cases.forEach(function(c){
   pdfs.defer(convert,c.caseNumber);
 });

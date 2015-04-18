@@ -6,12 +6,14 @@ var fs = require("fs"),
 
 var years = queue(1);
 
+// Scrape years, one at a time
 for (var i = 2010; i <= 2014; i++) {
 
   years.defer(getYear,i);
 
 }
 
+// Write the entire list of cases as one JSON file
 years.awaitAll(function(err,cases){
   if (err) {
     throw new Error(err);
@@ -20,6 +22,7 @@ years.awaitAll(function(err,cases){
   fs.writeFile("cases.json",JSON.stringify(_.flatten(cases)));
 });
 
+// Get the page for that term year
 function getYear(year,cb) {
 
   console.log(year);
@@ -36,6 +39,7 @@ function getYear(year,cb) {
 
 }
 
+// Get rows from the table, download each PDF
 function getRows(body,cb) {
 
   var $ = cheerio.load(body),
@@ -80,6 +84,7 @@ function getRows(body,cb) {
 
 }
 
+// Download an individual PDF
 function getTranscript(details,cb) {
 
   var file = fs.createWriteStream("raw/" + details.caseNumber + ".pdf");
@@ -93,6 +98,5 @@ function getTranscript(details,cb) {
       return cb(err);
     })
     .pipe(file);
-
 
 }
