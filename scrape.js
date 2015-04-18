@@ -82,7 +82,7 @@ function getRows(body,cb) {
 
 function getTranscript(details,cb) {
 
-  var file = fs.createWriteStream("raw/" + details.filename);
+  var file = fs.createWriteStream("raw/" + details.caseNumber + ".pdf");
 
   file.on("finish",function(){
     return cb(null,details);

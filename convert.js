@@ -7,7 +7,7 @@ var fs = require("fs"),
 var pdfs = queue(1);
 
 cases.forEach(function(c){
-  pdfs.defer(convert,c.filename,c.caseNumber);
+  pdfs.defer(convert,c.caseNumber);
 });
 
 pdfs.awaitAll(function(err){
@@ -16,16 +16,14 @@ pdfs.awaitAll(function(err){
   }
 });
 
-function convert(filename,caseNumber,cb) {
+function convert(caseNumber,cb) {
 
-  var absolute = path.resolve("raw/" + filename),
+  var absolute = path.resolve("raw/" + caseNumber + ".pdf"),
       json = "json/" + caseNumber + ".json";
 
   if (fs.existsSync(json)) {
     return cb(null);
   }
-
-  console.log(filename);
 
   var processor = extract(absolute,{type:"text"},function(){});
 
